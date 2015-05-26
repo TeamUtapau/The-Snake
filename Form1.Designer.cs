@@ -29,25 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.pbCanvas = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblScore = new System.Windows.Forms.Label();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.lblGameOver = new System.Windows.Forms.Label();
+            this.pbCanvas = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pbCanvas
-            // 
-            this.pbCanvas.BackColor = System.Drawing.Color.Blue;
-            this.pbCanvas.BackgroundImage = global::Snake.Properties.Resources.cartoon_snake_st4;
-            this.pbCanvas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbCanvas.Location = new System.Drawing.Point(13, 13);
-            this.pbCanvas.Name = "pbCanvas";
-            this.pbCanvas.Size = new System.Drawing.Size(432, 424);
-            this.pbCanvas.TabIndex = 0;
-            this.pbCanvas.TabStop = false;
-            this.pbCanvas.Paint += new System.Windows.Forms.PaintEventHandler(this.pbCanvas_Paint);
             // 
             // label1
             // 
@@ -79,6 +67,18 @@
             this.lblGameOver.Text = "label2";
             this.lblGameOver.Visible = false;
             // 
+            // pbCanvas
+            // 
+            this.pbCanvas.BackColor = System.Drawing.Color.Blue;
+            this.pbCanvas.BackgroundImage = global::Snake.Properties.Resources.cartoon_snake_st4;
+            this.pbCanvas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbCanvas.Location = new System.Drawing.Point(13, 13);
+            this.pbCanvas.Name = "pbCanvas";
+            this.pbCanvas.Size = new System.Drawing.Size(432, 424);
+            this.pbCanvas.TabIndex = 0;
+            this.pbCanvas.TabStop = false;
+            this.pbCanvas.Paint += new System.Windows.Forms.PaintEventHandler(this.pbCanvas_Paint);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -90,6 +90,7 @@
             this.Controls.Add(this.pbCanvas);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).EndInit();

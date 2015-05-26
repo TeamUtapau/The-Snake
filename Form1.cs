@@ -300,9 +300,9 @@ namespace Snake
                 listOfPoints.Add(p1);
 
                 Controls.Add(newBrick);
+                
+                newBrick.BackgroundImage = Image.FromFile(@"C:\Users\ff\Documents\The-Snake\Resources\brickspreviewbrick1block1.png");
                 newBrick.Show();
-                newBrick.BackColor = Color.Aqua;
-                newBrick.ForeColor = Color.Aqua;
                 newBrick.Height = 20;
                 newBrick.Width = 100;
 
@@ -318,6 +318,11 @@ namespace Snake
             listOfPoints.Clear();
             pbCanvas.BringToFront();
            
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
