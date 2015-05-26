@@ -30,3 +30,11 @@ C:\Users\Yordan_2\Desktop\Snake\obj\x86\Debug\Snake.Properties.Resources.resourc
 C:\Users\Yordan_2\Desktop\Snake\obj\x86\Debug\Snake.csproj.GenerateResource.Cache
 C:\Users\Yordan_2\Desktop\Snake\bin\Debug\Snake.exe
 C:\Users\Yordan_2\Desktop\Snake\bin\Debug\Snake.pdb
+C:\Users\ff\Documents\The-Snake\obj\x86\Debug\Snake.exe
+C:\Users\ff\Documents\The-Snake\obj\x86\Debug\Snake.pdb
+C:\Users\ff\Documents\The-Snake\bin\Debug\Snake.exe
+C:\Users\ff\Documents\The-Snake\bin\Debug\Snake.pdb
+C:\Users\ff\Documents\The-Snake\obj\x86\Debug\Snake.csprojResolveAssemblyReference.cache
+C:\Users\ff\Documents\The-Snake\obj\x86\Debug\Snake.Form1.resources
+C:\Users\ff\Documents\The-Snake\obj\x86\Debug\Snake.Properties.Resources.resources
+C:\Users\ff\Documents\The-Snake\obj\x86\Debug\Snake.csproj.GenerateResource.Cache

@@ -10,6 +10,7 @@ namespace Snake
     {
         private List<Circle> Snake = new List<Circle>();
         private Circle food = new Circle();
+        List<Point> listOfPoints = new List<Point>();
 
         public Form1()
         {
