@@ -179,8 +179,25 @@ namespace Snake
                     if (Snake[0].X == food.X && Snake[0].Y == food.Y)
                     {
                         Eat();
-                        
 
+                                 
+
+                    }
+
+                    //Detect collision with barrier   
+                    for (int j = 0; j < listOfPoints.Count; j++)
+                    {
+
+                        Rectangle myRectangle = new Rectangle(listOfPoints[j].X - 20, listOfPoints[j].Y - 20, 110, 30);
+
+
+
+                        if (myRectangle.Contains(Snake[0].X * Settings.Width, Snake[0].Y * Settings.Height))
+                        {
+
+                            Die();
+
+                        }
                     }
 
                 }
@@ -225,6 +242,72 @@ namespace Snake
             gameTimer.Interval = 100;            
             GenerateFood();
             Settings.Speed += 1;
+
+
+            if (Settings.Score % 200 == 0)
+            {
+                bool a;
+                bool c = new bool();
+
+                PictureBox newBrick = new PictureBox();
+                Random rnd = new Random();
+
+                int maxX = pbCanvas.Size.Width - 100;
+                int maxY = pbCanvas.Size.Height - 100;
+
+                Point p1;
+
+
+                do
+                {
+                    int xCoordinate = rnd.Next(13, maxX);
+                    int yCoordinate = rnd.Next(13, maxY);
+                    p1 = new Point(xCoordinate, yCoordinate);
+
+                    int distanceToFood = (p1.X - food.X * Settings.Height) * (p1.X - food.X * Settings.Height) + (p1.Y - food.Y * Settings.Height) * (p1.Y - food.Y * Settings.Height);
+
+                    if (distanceToFood < 10000)
+                    {
+                        a = true;
+                    }
+                    else
+                    {
+                        a = false;
+                    }
+
+                    for (int i = 0; i < listOfPoints.Count; i++)
+                    {
+                        int distanceToOtherBricks = (p1.X - listOfPoints[i].X) * (p1.X - listOfPoints[i].X) + (p1.Y - listOfPoints[i].Y) * (p1.Y - listOfPoints[i].Y);
+
+                        if (distanceToOtherBricks < 10000)
+                        {
+                            c = true;
+                            break;
+
+                        }
+                        else
+                        {
+                            c = false;
+                        }
+                    }
+
+                }
+                while (a || c);
+
+
+                newBrick.Location = p1;
+                listOfPoints.Add(p1);
+
+                Controls.Add(newBrick);
+                newBrick.Show();
+                newBrick.BackColor = Color.Aqua;
+                newBrick.ForeColor = Color.Aqua;
+                newBrick.Height = 20;
+                newBrick.Width = 100;
+
+                newBrick.BringToFront();
+            }
+
 
         }
 
