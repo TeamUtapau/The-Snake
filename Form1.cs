@@ -344,8 +344,8 @@ namespace Snake
                 listOfPoints.Add(p1);
 
                 Controls.Add(newBrick);
-                
-                newBrick.BackgroundImage = Image.FromFile(@"C:\Users\ff\Documents\The-Snake\Resources\brickspreviewbrick1block1.png");
+
+                newBrick.BackColor = Color.Aqua;
                 newBrick.Show();
                 newBrick.Height = 23;
                 newBrick.Width = 100;
