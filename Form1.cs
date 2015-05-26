@@ -56,8 +56,35 @@ namespace Snake
             int maxXPos = pbCanvas.Size.Width / Settings.Width;
             int maxYPos = pbCanvas.Size.Height / Settings.Height;
 
-            Random random = new Random();
-            food = new Circle {X = random.Next(0, maxXPos), Y = random.Next(0, maxYPos)};
+           
+            bool tooCloseToBricks = new bool ();
+            int m;
+            int n;
+            
+            do
+            {
+                Random random = new Random();
+                m = random.Next(0, maxXPos);
+                n = random.Next(0, maxYPos);
+                
+                for (int i = 0; i < listOfPoints.Count; i++)
+                {
+                    int distanceToBricks = (m * Settings.Height - listOfPoints[i].X) * (m * Settings.Height - listOfPoints[i].X) + (n*Settings.Width - listOfPoints[i].Y) * (n*Settings.Width - listOfPoints[i].Y);
+
+                    if (distanceToBricks < 10000)
+                    {
+                        tooCloseToBricks = true;
+                        break;
+                    }
+                    else
+                    {
+                        tooCloseToBricks = false;
+                    }
+                }                
+            }
+            while(tooCloseToBricks);
+
+            food = new Circle {X = m, Y = n};
         }
 
 
@@ -189,7 +216,7 @@ namespace Snake
                     for (int j = 0; j < listOfPoints.Count; j++)
                     {
 
-                        Rectangle myRectangle = new Rectangle(listOfPoints[j].X - 20, listOfPoints[j].Y - 20, 110, 30);
+                        Rectangle myRectangle = new Rectangle(listOfPoints[j].X - 25, listOfPoints[j].Y - 25, 105, 26);
 
 
 
@@ -247,8 +274,10 @@ namespace Snake
 
             if (Settings.Score % 200 == 0)
             {
-                bool a;
-                bool c = new bool();
+                bool tooCloseToFood = new bool();
+                bool tooCloseToOtherBricks = new bool();
+                bool tooCloseToSnakeBody = new bool();
+
 
                 PictureBox newBrick = new PictureBox();
                 Random rnd = new Random();
@@ -269,11 +298,11 @@ namespace Snake
 
                     if (distanceToFood < 10000)
                     {
-                        a = true;
+                        tooCloseToFood = true;
                     }
                     else
                     {
-                        a = false;
+                        tooCloseToFood = false;
                     }
 
                     for (int i = 0; i < listOfPoints.Count; i++)
@@ -282,18 +311,33 @@ namespace Snake
 
                         if (distanceToOtherBricks < 10000)
                         {
-                            c = true;
+                            tooCloseToOtherBricks = true;
                             break;
 
                         }
                         else
                         {
-                            c = false;
+                            tooCloseToOtherBricks = false;
+                        }
+                    }
+
+                    for (int i = 0; i < Snake.Count; i++)
+                    {
+                        int distanceToSnakeBody = (p1.X - Snake[i].X*Settings.Width) * (p1.X - Snake[i].X*Settings.Width) + (p1.Y - Snake[i].Y*Settings.Height) * (p1.Y - Snake[i].Y*Settings.Height);
+                        
+                        if (distanceToSnakeBody<10000)
+                        {
+                            tooCloseToSnakeBody = true;
+                            break;
+                        }
+                        else
+                        {
+                            tooCloseToSnakeBody = false;
                         }
                     }
 
                 }
-                while (a || c);
+                while (tooCloseToFood || tooCloseToOtherBricks || tooCloseToSnakeBody);
 
 
                 newBrick.Location = p1;
@@ -303,7 +347,7 @@ namespace Snake
                 
                 newBrick.BackgroundImage = Image.FromFile(@"C:\Users\ff\Documents\The-Snake\Resources\brickspreviewbrick1block1.png");
                 newBrick.Show();
-                newBrick.Height = 20;
+                newBrick.Height = 23;
                 newBrick.Width = 100;
 
                 newBrick.BringToFront();
