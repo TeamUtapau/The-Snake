@@ -11,6 +11,7 @@ namespace Snake
         private List<Circle> Snake = new List<Circle>();
         private Circle food = new Circle();
         List<Point> listOfPoints = new List<Point>();
+        PictureBox newBrick = new PictureBox();
 
         public Form1()
         {
@@ -314,6 +315,9 @@ namespace Snake
         private void Die()
         {
             Settings.GameOver = true;
+            listOfPoints.Clear();
+            pbCanvas.BringToFront();
+           
         }
     }
 }
