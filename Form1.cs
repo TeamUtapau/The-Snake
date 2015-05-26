@@ -22,7 +22,7 @@ namespace Snake
             new Settings();
 
             //Set game speed and start timer
-            gameTimer.Interval = 1000 / Settings.Speed++;
+            gameTimer.Interval = 1000 / Settings.Speed;
             gameTimer.Tick += UpdateScreen;
             gameTimer.Start();
 
@@ -269,7 +269,7 @@ namespace Snake
             lblScore.Text = Settings.Score.ToString();
             gameTimer.Interval = 100;            
             GenerateFood();
-            Settings.Speed += 1;
+            
 
 
             if (Settings.Score % 200 == 0)
