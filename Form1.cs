@@ -216,7 +216,7 @@ namespace Snake
                     for (int j = 0; j < listOfPoints.Count; j++)
                     {
 
-                        Rectangle myRectangle = new Rectangle(listOfPoints[j].X - 25, listOfPoints[j].Y - 25, 75, 26);
+                        Rectangle myRectangle = new Rectangle(listOfPoints[j].X - 25, listOfPoints[j].Y - 25, 67, 26);
 
 
 
@@ -345,10 +345,12 @@ namespace Snake
 
                 Controls.Add(newBrick);
 
+
                 newBrick.BackColor = Color.Brown;
+                newBrick.BorderStyle = BorderStyle.FixedSingle;            
                 newBrick.Show();
                 newBrick.Height = 23;
-                newBrick.Width = 70;
+                newBrick.Width = 55;
 
                 newBrick.BringToFront();
             }
