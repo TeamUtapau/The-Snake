@@ -269,10 +269,17 @@ namespace Snake
             lblScore.Text = Settings.Score.ToString();
             gameTimer.Interval = 100;            
             GenerateFood();
-            
 
 
-            if (Settings.Score % 200 == 0)
+
+            GenerateNewBrick();
+
+
+        }
+
+        private void GenerateNewBrick()
+        {
+            if (Settings.Score % 300 == 0)
             {
                 bool tooCloseToFood = new bool();
                 bool tooCloseToOtherBricks = new bool();
@@ -323,9 +330,9 @@ namespace Snake
 
                     for (int i = 0; i < Snake.Count; i++)
                     {
-                        int distanceToSnakeBody = (p1.X - Snake[i].X*Settings.Width) * (p1.X - Snake[i].X*Settings.Width) + (p1.Y - Snake[i].Y*Settings.Height) * (p1.Y - Snake[i].Y*Settings.Height);
-                        
-                        if (distanceToSnakeBody<10000)
+                        int distanceToSnakeBody = (p1.X - Snake[i].X * Settings.Width) * (p1.X - Snake[i].X * Settings.Width) + (p1.Y - Snake[i].Y * Settings.Height) * (p1.Y - Snake[i].Y * Settings.Height);
+
+                        if (distanceToSnakeBody < 10000)
                         {
                             tooCloseToSnakeBody = true;
                             break;
@@ -347,15 +354,13 @@ namespace Snake
 
 
                 newBrick.BackColor = Color.Brown;
-                newBrick.BorderStyle = BorderStyle.FixedSingle;            
+                newBrick.BorderStyle = BorderStyle.FixedSingle;
                 newBrick.Show();
                 newBrick.Height = 23;
                 newBrick.Width = 55;
 
                 newBrick.BringToFront();
             }
-
-
         }
 
         private void Die()
